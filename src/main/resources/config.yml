@@ -1,0 +1,31 @@
+settings:
+  # Distance between islands (in blocks)
+  island-distance: 1500
+  
+  # Starting coordinates for the first island
+  starting-x: 0
+  starting-z: 0
+  
+  # Default Y level for islands
+  default-y: 100
+  
+  # Marker block type for island locations
+  marker-block: DIAMOND_BLOCK
+  
+  # World settings
+  world-type: NORMAL
+  generator: "SKIBlock:VoidGenerator"
+  
+  # Teleportation settings
+  teleport-offset-x: 0.5
+  teleport-offset-z: 0.5
+  
+  # Messages
+  messages:
+    no-permission: "§cYou do not have permission to use this command!"
+    only-players: "§cThis command can only be used by players!"
+    world-created: "§aSkyBlock world created successfully!"
+    world-failed: "§cFailed to create SkyBlock world!"
+    island-created: "§aWelcome to your new island!"
+    teleported: "§aTeleported to your island!"
+    world-not-found: "§cSkyBlock world does not exist! Use /createsbworld first."
