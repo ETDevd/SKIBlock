@@ -50,9 +50,10 @@ public class SKIBlock extends JavaPlugin {
                 player.sendMessage(config.getString("settings.messages.no-permission"));
                 return true;
             }
+            if(){}
 
-            WorldCreator worldCreator = new WorldCreator("skyblock");
-            worldCreator.environment(World.Environment.NORMAL);
+            WorldCreator worldCreator = new WorldCreator("skiblock");
+            worldCreator.environment(World.Environment.The_End);
             worldCreator.type(WorldType.valueOf(config.getString("settings.world-type")));
             worldCreator.generator("SKIBlock:VoidGenerator");
             World world = worldCreator.createWorld();
@@ -101,7 +102,7 @@ public class SKIBlock extends JavaPlugin {
             z += (row - 1) * config.getInt("settings.island-distance");
 
             // Create island location in skyblock world
-            World world = getServer().getWorld("skyblock");
+            World world = getServer().getWorld("skiblock");
             if (world == null) {
                 player.sendMessage(config.getString("settings.messages.world-not-found"));
                 return true;
