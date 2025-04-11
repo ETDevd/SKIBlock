@@ -67,6 +67,12 @@ public class SKIBlock extends JavaPlugin {
     }
 
     private class StartSkyBlockCommand implements CommandExecutor {
+        private final SchematicLoader schematicLoader;
+
+        public StartSkyBlockCommand() {
+            this.schematicLoader = new SchematicLoader(SKIBlock.this);
+        }
+
         @Override
         public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
             if (!(sender instanceof Player)) {
@@ -116,19 +122,22 @@ public class SKIBlock extends JavaPlugin {
             
             // Place marker block at default Y
             Location markerLocation = new Location(world, x, defaultY, z);
-            Material markerBlock = Material.valueOf(config.getString("settings.marker-block"));
-            world.getBlockAt(markerLocation).setType(markerBlock);
             
             // Save island location
             islandData.setIslandLocation(playerId, markerLocation);
             
-            // Teleport player with offset and proper Y position
-            Location teleportLocation = markerLocation.clone();
-            teleportLocation.setX(teleportLocation.getX() + config.getDouble("settings.teleport-offset-x"));
-            teleportLocation.setZ(teleportLocation.getZ() + config.getDouble("settings.teleport-offset-z"));
-            teleportLocation.setY(defaultY + 1); // Teleport slightly above the marker block
-            player.teleport(teleportLocation);
-            player.sendMessage(config.getString("settings.messages.island-created"));
+            // Load schematic at the marker location
+            if (schematicLoader.loadSchematic(markerLocation)) {
+                // Teleport player with offset and proper Y position
+                Location teleportLocation = markerLocation.clone();
+                teleportLocation.setX(teleportLocation.getX() + config.getDouble("settings.teleport-offset-x"));
+                teleportLocation.setZ(teleportLocation.getZ() + config.getDouble("settings.teleport-offset-z"));
+                teleportLocation.setY(defaultY + 1); // Teleport slightly above the marker block
+                player.teleport(teleportLocation);
+                player.sendMessage(config.getString("settings.messages.island-created"));
+            } else {
+                player.sendMessage(config.getString("settings.messages.schematic-failed"));
+            }
             
             return true;
         }
