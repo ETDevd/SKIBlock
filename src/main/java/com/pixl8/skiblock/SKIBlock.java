@@ -50,12 +50,11 @@ public class SKIBlock extends JavaPlugin {
                 player.sendMessage(config.getString("settings.messages.no-permission"));
                 return true;
             }
-            if(){}
 
             WorldCreator worldCreator = new WorldCreator("skiblock");
-            worldCreator.environment(World.Environment.The_End);
-            worldCreator.type(WorldType.valueOf(config.getString("settings.world-type")));
-            worldCreator.generator("SKIBlock:VoidGenerator");
+            worldCreator.environment(World.Environment.NORMAL);
+            worldCreator.type(WorldType.FLAT);
+            worldCreator.generator(new VoidGenerator());
             World world = worldCreator.createWorld();
 
             if (world != null) {
@@ -85,6 +84,10 @@ public class SKIBlock extends JavaPlugin {
                 Location adjustedLocation = islandLocation.clone();
                 adjustedLocation.setX(adjustedLocation.getX() + config.getDouble("settings.teleport-offset-x"));
                 adjustedLocation.setZ(adjustedLocation.getZ() + config.getDouble("settings.teleport-offset-z"));
+                
+                // Ensure Y position is above the marker block
+                adjustedLocation.setY(islandLocation.getY() + 1);
+                
                 player.teleport(adjustedLocation);
                 player.sendMessage(config.getString("settings.messages.teleported"));
                 return true;
