@@ -1,4 +1,4 @@
-package com.example.borderplugin;
+package com.etdevd.borderplug;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
