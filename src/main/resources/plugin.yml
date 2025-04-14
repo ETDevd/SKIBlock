@@ -10,3 +10,6 @@ commands:
   stp:
     description: Start your SkyBlock adventure
     permission: skiblock.use
+  sborder:
+    description: Set your border size and center.
+    permission: skiblock.admin

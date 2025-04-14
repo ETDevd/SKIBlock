@@ -2,6 +2,9 @@ settings:
   # Distance between islands (in blocks)
   island-distance: 1500
   
+  # Size of border (in blocks)
+  border-size: 100
+
   # Starting coordinates for the first island
   starting-x: 0
   starting-z: 0
@@ -14,6 +17,7 @@ settings:
   
   # World settings
   world-type: NORMAL
+  world-name: skiblock
   generator: "SKIBlock:VoidGenerator"
   
   # Teleportation settings
@@ -28,4 +32,4 @@ settings:
     world-failed: "§cFailed to create SkyBlock world!"
     island-created: "§aWelcome to your new island!"
     teleported: "§aTeleported to your island!"
-    world-not-found: "§cSkyBlock world does not exist! Use /createsbworld first."
+    schematic-failed: "§cFailed to load the island schematic!"
