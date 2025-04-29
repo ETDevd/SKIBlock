@@ -14,23 +14,23 @@ public class VoidGenerator extends ChunkGenerator {
     @Override
     public ChunkGenerator.ChunkData generateChunkData(World world, Random random, int chunkX, int chunkZ, ChunkGenerator.BiomeGrid biome) {
         ChunkGenerator.ChunkData chunkData = createChunkData(world);
-        
-        // Set all blocks to air
+
+        // Set all blocks to air for the extended height range
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
-                for (int y = 0; y < world.getMaxHeight(); y++) {
+                for (int y = world.getMinHeight(); y < world.getMaxHeight(); y++) {
                     chunkData.setBlock(x, y, z, Material.AIR);
                 }
             }
         }
-        
+
         // Set biome to ocean for the entire chunk
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
-                biome.setBiome(x, z, org.bukkit.block.Biome.OCEAN);
+                biome.setBiome(x, z, org.bukkit.block.Biome.THE_VOID);
             }
         }
-        
+
         return chunkData;
     }
 

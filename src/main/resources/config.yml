@@ -19,6 +19,17 @@ settings:
   world-type: NORMAL
   world-name: skiblock
   generator: "SKIBlock:VoidGenerator"
+
+  # GUI settings
+  biome-mapping:
+  1: FOREST
+  2: MUSHROOM_FIELDS
+  3: MANGROVE_SWAMP
+  4: DESERT
+  5: MEADOW
+  6: SNOWY_TUNDRA
+  7: JUNGLE
+  8: BADLANDS
   
   # Teleportation settings
   teleport-offset-x: 0.5
